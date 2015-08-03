@@ -3,7 +3,7 @@
 </head>
 
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
     <header class="mdl-layout__header">
       <div class="mdl-layout-icon"></div>
@@ -41,11 +41,27 @@
 <template name="demo">
   <p>There are currently {{counter}} posts.</p>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Click Me</button>
-  {{#each posts}}
-    {{> post}}
-  {{/each}}
+  <div class="mdl-grid">
+    {{#each posts}}
+      <div class="mdl-cell mdl-cell--12-col">
+        {{> post}}
+      </div>
+    {{/each}}
+  </div>
 </template>
 
 <template name="post">
-  <p>{{title}} - <a href="{{url}}">{{url}}</a></p>
+  <div class="mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">{{title}}</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    {{summary}}
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{url}}">
+      Read full story
+    </a>
+  </div>
+</div>
 </template>
