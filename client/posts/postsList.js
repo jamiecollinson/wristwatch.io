@@ -1,3 +1,7 @@
+Template.postsList.onCreated(function() {
+  this.subscribe('posts');
+});
+
 Template.postsList.helpers({
   counter: function() {
     return Posts.find({}).count();

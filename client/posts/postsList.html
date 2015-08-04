@@ -1,11 +1,15 @@
 <template name="postsList">
-  <p>There are currently {{counter}} posts.</p>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Click Me</button>
-  <div class="mdl-grid">
-    {{#each posts}}
-      <div class="mdl-cell mdl-cell--12-col">
-        {{> post}}
-      </div>
-    {{/each}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    <p>There are currently {{counter}} posts.</p>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Click Me</button>
+    <div class="mdl-grid">
+      {{#each posts}}
+        <div class="mdl-cell mdl-cell--12-col">
+          {{> postItem}}
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    Loading...
+  {{/if}}
 </template>
