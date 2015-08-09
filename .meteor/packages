@@ -8,3 +8,6 @@ meteor-platform
 insecure
 spectrum:material-design-lite
 digilord:faker
+kadira:flow-router
+kadira:blaze-layout
+sacha:spin
