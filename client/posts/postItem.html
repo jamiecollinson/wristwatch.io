@@ -1,16 +1,12 @@
 <template name="postItem">
-  <div class="mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">{{title}}</h2>
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title light-blue-text">{{title}}</span>
+      <p><small>{{domain}}</small></p>
+      <p>{{summary}}</p>
+    </div>
+    <div class="card-action">
+      <a href="/posts/{{_id}}">Discuss this story</a>
+    </div>
   </div>
-  <div class="mdl-card__supporting-text">
-    <p><small>{{domain}}</small></p>
-    {{summary}}
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/posts/{{_id}}">
-      Read full story
-    </a>
-  </div>
-</div>
 </template>

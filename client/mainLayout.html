@@ -4,36 +4,50 @@
   </head>
 
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
-      <header class="mdl-layout__header">
-        <div class="mdl-layout-icon"></div>
-        <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Wristwatch.io</span>
-          <div class="mdl-layout-spacer"></div>
-          <nav class="mdl-navigation">
-            {{> loginButtons}}
-          </nav>
-        </div>
-      </header>
-
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Wristwatch.io</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="#">Nav link 1</a>
-          <a class="mdl-navigation__link" href="#">Nav link 2</a>
-          <a class="mdl-navigation__link" href="#">Nav link 3</a>
-        </nav>
+    <nav class='white'>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo light-blue-text">wristwatch.io</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#" class='light-blue-text'>link 1</a></li>
+          <li><a href="#" class='light-blue-text'>link 2</a></li>
+          <li><a href="#" class='light-blue-text'>link 3</a></li>
+          {{#if currentUser}}
+            <li><a href="/logout" class='light-blue-text btn'>Logout</a></li>
+          {{else}}
+            <li><a href="/login" class='light-blue-text btn'>Login</a></li>
+          {{/if}}
+        </ul>
       </div>
+    </nav>
 
-      <main class="mdl-layout__content">
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--12-col">
-            {{> Template.dynamic template=main}}
+    <div class='container'>
+      {{> Template.dynamic template=main}}
+    </div>
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            </ul>
           </div>
         </div>
-      </main>
-
-    </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2015
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </template>

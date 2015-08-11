@@ -1,10 +1,10 @@
 <template name="postsList">
   {{#if Template.subscriptionsReady}}
     <p>There are currently {{counter}} posts.</p>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Click Me</button>
-    <div class="mdl-grid">
+    <button class="btn waves-effect waves-light">Click Me</button>
+    <div class="row">
       {{#each posts}}
-        <div class="mdl-cell mdl-cell--12-col">
+        <div class="col s12">
           {{> postItem}}
         </div>
       {{/each}}

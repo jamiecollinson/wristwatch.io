@@ -5,10 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-insecure
-spectrum:material-design-lite
 digilord:faker
 kadira:flow-router
 kadira:blaze-layout
-sacha:spin
 accounts-password
+materialize:materialize
+useraccounts:materialize
