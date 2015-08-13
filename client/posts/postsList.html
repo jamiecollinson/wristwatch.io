@@ -12,4 +12,12 @@
   {{else}}
     {{> loading}}
   {{/if}}
+
+  {{#if currentUser}}
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px">
+      <a class="btn-floating btn-large red" href="/submit">
+        <i class="large mdi-content-add"></i>
+      </a>
+    </div>
+  {{/if}}
 </template>
