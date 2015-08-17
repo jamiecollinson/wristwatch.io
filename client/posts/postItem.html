@@ -1,12 +1,17 @@
 <template name="postItem">
   <div class="card">
     <div class="card-content">
+      {{#if ownPost}}
+        <span class="right">
+          <a class="btn-flat waves-effect" href="{{pathFor 'postEdit' id=_id}}">Edit</a>
+        </span>
+      {{/if}}
       <span class="card-title light-blue-text">{{title}}</span>
       <p><small>{{domain}}</small></p>
       <p>{{summary}}</p>
     </div>
     <div class="card-action">
-      <a href="/posts/{{_id}}">Discuss this story</a>
+      <a href="{{pathFor 'postPage' id=_id}}">Discuss this story</a>
     </div>
   </div>
 </template>

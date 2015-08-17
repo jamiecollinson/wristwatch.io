@@ -28,7 +28,6 @@ Meteor.methods({
 
     // Async data lookup via embedly
     Embedly.extract(post.url, function(error, result) {
-      console.log(error, result);
       if (!error)
         Posts.update({ _id: postId }, { $set: { summary: result.description }});
     });
