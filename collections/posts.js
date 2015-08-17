@@ -27,14 +27,18 @@ Meteor.methods({
     var post = _.extend(doc, {
       userId: user._id,
       submitted: new Date(),
-      summary: 'Summary not fetched yet...'
+      summary: 'Summary pending...',
+      metadataFetched: false
     });
     var postId = Posts.insert(post);
 
     // Async data lookup via embedly
     Embedly.extract(post.url, function(error, result) {
       if (!error)
-        Posts.update({ _id: postId }, { $set: { summary: result.description }});
+        Posts.update({ _id: postId }, { $set: {
+          summary: result.description,
+          metadataFetched: true
+        }});
     });
 
     return {
