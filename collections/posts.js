@@ -1,5 +1,10 @@
 Posts = new Mongo.Collection('posts');
 
+Posts.allow({
+  update: ownsDoc,
+  remove: ownsDoc
+});
+
 Meteor.methods({
   'insertPost': function(doc) {
     if (!Meteor.user()) {
