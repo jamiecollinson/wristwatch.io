@@ -2,7 +2,9 @@ Posts = new Mongo.Collection('posts');
 
 Meteor.methods({
   'insertPost': function(doc) {
-    check(Meteor.userId(), String);
+    if (!Meteor.user()) {
+      throw new Meteor.Error(401, "You must be logged in to post");
+    }
     check(doc, {
       url: String,
       title: String
@@ -23,6 +25,14 @@ Meteor.methods({
       summary: 'Summary not fetched yet...'
     });
     var postId = Posts.insert(post);
+
+    // Async data lookup via embedly
+    Embedly.extract(post.url, function(error, result) {
+      console.log(error, result);
+      if (!error)
+        Posts.update({ _id: postId }, { $set: { summary: result.description }});
+    });
+
     return {
       _id: postId
     };
