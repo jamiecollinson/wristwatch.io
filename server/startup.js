@@ -6,6 +6,7 @@ Meteor.startup(function() {
       if (!error)
         Posts.update({ _id: post._id }, { $set: {
           summary: result.description,
+          embedlyData: result,
           metadataFetched: true
         }});
     });

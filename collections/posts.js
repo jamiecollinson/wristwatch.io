@@ -37,6 +37,7 @@ Meteor.methods({
       if (!error)
         Posts.update({ _id: postId }, { $set: {
           summary: result.description,
+          embedlyData: result,
           metadataFetched: true
         }});
     });
