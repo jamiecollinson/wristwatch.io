@@ -5,6 +5,28 @@ Posts.allow({
   remove: ownsDoc
 });
 
+var getEmbedlyData = function(doc) {
+  // Async data lookup via embedly
+  Embedly.extract(doc.url, function(error, result) {
+    if (!error)
+      Posts.update({ _id: doc._id }, { $set: {
+        summary: result.description,
+        embedlyData: result,
+        metadataFetched: true
+      }});
+  });
+};
+
+Posts.after.insert(function(userId, doc) {
+  getEmbedlyData(doc);
+});
+
+Posts.after.update(function(userId, doc) {
+  if (this.previous.url !== doc.url) {
+    getEmbedlyData(doc);
+  }
+});
+
 Meteor.methods({
   'insertPost': function(doc) {
     if (!Meteor.user()) {
@@ -31,16 +53,6 @@ Meteor.methods({
       metadataFetched: false
     });
     var postId = Posts.insert(post);
-
-    // Async data lookup via embedly
-    Embedly.extract(post.url, function(error, result) {
-      if (!error)
-        Posts.update({ _id: postId }, { $set: {
-          summary: result.description,
-          embedlyData: result,
-          metadataFetched: true
-        }});
-    });
 
     return {
       _id: postId
